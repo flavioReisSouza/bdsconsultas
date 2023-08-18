@@ -28,7 +28,16 @@ public class Uri2602Application implements CommandLineRunner {
 		List<CustomerMinDTO> result1 = list.stream().map(CustomerMinDTO::new).
 				collect(Collectors.toList());
 
+		System.out.println("\n*** RESULTADO SQL RAIZ:"); //SQL RAIZ: SQL puro, sem JPQL
 		for (CustomerMinDTO obj : result1) {
+			System.out.println(obj);
+		}
+		System.out.println("\n");
+
+		List<CustomerMinDTO> result2 = repository.search2("RS");
+
+		System.out.println("\n*** RESULTADO JPQL:"); //JPQL: SQL com orientação a objetos
+		for (CustomerMinDTO obj : result2) {
 			System.out.println(obj);
 		}
 	}
